@@ -21,19 +21,19 @@ public class App {
     public static int[][] laberinto
                 = {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                    {0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 3, 0},
+                    {0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0},
                     {0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0},
-                    {0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0},
-                    {0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0},
-                    {0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0},
-                    {0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0},
-                    {0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0},
-                    {0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0},
-                    {0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-                    {0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-                    {0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0},
-                    {0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0},
-                    {0, 2, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0},
+                    {0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0},
+                    {0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0},
+                    {0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0},
+                    {0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0},
+                    {0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 1, 1, 1, 0},
+                    {0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0},
+                    {0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+                    {0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+                    {0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0},
+                    {0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0},
+                    {0, 2, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
                 };
     
@@ -42,11 +42,8 @@ public class App {
     public static void main(String[] args) throws InterruptedException {
 
         //0 = pared, 1 = traspasable, 2 = jugador, 3 = bandera
-        
 
-        
-
-        pathFinding(new Lista(), laberinto, pjfila, pjcol);
+        resuelveLaberinto(new Lista(), laberinto, pjfila, pjcol);
 
         if (listas.size() < 10) {
             for (int i = 0; i < listas.size(); i++) {
@@ -55,7 +52,7 @@ public class App {
         }
 
         System.out.println(Lista.pasos_minimos);
-
+        System.out.println(Lista.camino_corto);
         Teclado teclado = new Teclado();
         Lienzo lienzo = new Lienzo(teclado);
         Ventana ventana = new Ventana(lienzo);
@@ -119,7 +116,7 @@ public class App {
 
     static ArrayList<Lista> listas = new ArrayList<>();
 
-    public static void pathFinding(Lista lista, int[][] laberinto, int fila, int col) {
+    public static void resuelveLaberinto(Lista lista, int[][] laberinto, int fila, int col) {
 
         if (laberinto[fila][col] == 3) {
             listas.add(lista);
@@ -136,7 +133,7 @@ public class App {
                     lista.posiciony_visitada.add(col);
                     final Lista inicial = new Lista(lista);
                     lista.insertar("↑");
-                    pathFinding(lista, laberinto, fila - 1, col);
+                    resuelveLaberinto(lista, laberinto, fila - 1, col);
                     lista = inicial;
                 }
             }
@@ -148,7 +145,7 @@ public class App {
                     lista.posiciony_visitada.add(col);
                     final Lista inicial = new Lista(lista);
                     lista.insertar("↓");
-                    pathFinding(lista, laberinto, fila + 1, col);
+                    resuelveLaberinto(lista, laberinto, fila + 1, col);
                     lista = inicial;
                 }
             }
@@ -160,7 +157,7 @@ public class App {
                     lista.posiciony_visitada.add(col);
                     final Lista inicial = new Lista(lista);
                     lista.insertar("←");
-                    pathFinding(lista, laberinto, fila, col - 1);
+                    resuelveLaberinto(lista, laberinto, fila, col - 1);
                     lista = inicial;
                 }
             }
@@ -171,7 +168,7 @@ public class App {
                     lista.posicionx_visitada.add(fila);
                     lista.posiciony_visitada.add(col);
                     lista.insertar("→");
-                    pathFinding(lista, laberinto, fila, col + 1);
+                    resuelveLaberinto(lista, laberinto, fila, col + 1);
                 }
             }
         }

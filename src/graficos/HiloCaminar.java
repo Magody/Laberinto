@@ -29,19 +29,19 @@ public class HiloCaminar implements Runnable{
             try {
                 Thread.sleep(delay);
                 if(p.direccion.compareToIgnoreCase("↑") == 0){
-                    App.laberinto[App.pjfila][App.pjcol] = 1;
+                    //App.laberinto[App.pjfila][App.pjcol] = 1;
                     App.laberinto[--App.pjfila][App.pjcol] = 2;
                 }
                 else if(p.direccion.compareToIgnoreCase("↓") == 0){
-                    App.laberinto[App.pjfila][App.pjcol] = 1;
+                    //App.laberinto[App.pjfila][App.pjcol] = 1;
                     App.laberinto[++App.pjfila][App.pjcol] = 2;
                 }
                 else if(p.direccion.compareToIgnoreCase("→") == 0){
-                    App.laberinto[App.pjfila][App.pjcol] = 1;
+                    //App.laberinto[App.pjfila][App.pjcol] = 1;
                     App.laberinto[App.pjfila][++App.pjcol] = 2;
                 }
                 else if(p.direccion.compareToIgnoreCase("←") == 0){
-                    App.laberinto[App.pjfila][App.pjcol] = 1;
+                    //App.laberinto[App.pjfila][App.pjcol] = 1;
                     App.laberinto[App.pjfila][--App.pjcol] = 2;
                 }
                 
@@ -56,7 +56,7 @@ public class HiloCaminar implements Runnable{
 
     public HiloCaminar(Lista pasos,int delay,Lienzo lienzo) {
         this.pasos = pasos;
-        this.delay = delay/2;
+        this.delay = delay;
         this.lienzo = lienzo;
         
     }
